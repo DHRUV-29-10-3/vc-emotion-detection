@@ -6,7 +6,7 @@ import json
 
 clf = pickle.load(open("model.pkl", "rb")) 
 
-test_data = pd.read_csv("./data/feature_eng/test_bow.csv")
+test_data = pd.read_csv("./data/processed/test_bow.csv")
 X_test = test_data.iloc[:,:-1].values 
 y_test = test_data.iloc[:,-1].values
 
@@ -26,5 +26,5 @@ metric_dict = {
     "Re" : recall, 
     "AUC" : auc
 }
-with open("metrics.json", "w") as file:
+with open("reports\metrics.json", "w") as file:
     json.dump(metric_dict, file, indent = 4)

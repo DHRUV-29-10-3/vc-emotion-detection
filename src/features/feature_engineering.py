@@ -5,8 +5,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 max_features_yaml = yaml.safe_load(open("params.yaml","r"))['feature_engineering']['max_features']
 
-train_data = pd.read_csv("./data/process/train_processed.csv")
-test_data = pd.read_csv("./data/process/test_processed.csv")
+train_data = pd.read_csv("./data/interim/train_processed.csv")
+test_data = pd.read_csv("./data/interim/test_processed.csv")
 
 train_data.fillna("", inplace=True) 
 test_data.fillna("", inplace=True)
@@ -34,7 +34,7 @@ test_df = pd.DataFrame(X_test_bow.toarray())
 
 test_df['label'] = y_test 
 
-data_path = os.path.join("data","feature_eng") 
+data_path = os.path.join("data","processed") 
 os.makedirs(data_path)
 
 train_df.to_csv(os.path.join(data_path,"train_bow.csv"))
